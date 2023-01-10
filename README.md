@@ -27,6 +27,7 @@ This document handles the reasoning behind the creation of this tool, the method
 - [Time Domain / DCIS method](#time-domain--dcis-method)
   - [Non-linear behaviour](#non-linear-behaviour)
   - [Pulse timing](#pulse-timing)
+  - [Adaptation to other battery layouts or chemistries](#adaptation-to-other-battery-layouts-or-chemistries)
   - [Ratiometric approach](#ratiometric-approach)
   - [Offset cancelling](#offset-cancelling)
   - [Power line Frequency compensation](#power-line-frequency-compensation)
@@ -194,6 +195,10 @@ The pulses are spaced out by a small relaxation time. The voltage drop over the 
 
 Unfortunately, I will want to do multiple measurements to drown out noise and do power line frequency compensation. That makes T<sub>3</sub> unsuited for my tool, amd I must limit myself to  R<sub>b</sub> and R<sub>SEI</sub>.
 
+### Adaptation to other battery layouts or chemistries
+
+The timings mentioned above are suitable for your average Li-Ion 18650 cell. If you want to use the DCIS method on other battery layouts or chemistries, you can adapt the timings via SCPI commands (see `CAL:T(1|2|PAUSE) {uint16}` below).
+
 ### Ratiometric approach
 
 The current pulse is sent through the battery, that is placed in series with a known resistor.
@@ -327,11 +332,11 @@ If a rechargeable battery is used, the USB charges the battery via trickle charg
 
 ## Buttons
 
-ON: short press button at the back
+ON: short press button at the back.
 
 OFF: long press button at the back, or via software control.
 
-Switch between AC and DCIS measurement, or leave remote control: press the navigation switch
+Switch between AC and DCIS measurement, or leave remote control: press the navigation switch.
 
 Change range: via left/right of the navigation switch. The 'Auto' range is at both ends.
 
@@ -373,7 +378,7 @@ The following SCPI commands are supported:
   - `CAL:VMIN {uint16}`: Set internal battery range min (mV).
   - `CAL:VMAX {uint16}`: Set internal battery range max (mV).
   - `CAL:R(1|2|3|4) {uint16}`: Set reference resistor value, for a specific range. The integer value to be entered is to be expressed as a multiple of a factor that depends on the range: 1:mΩ, 2:100µΩ, 3: 10µΩ, 4:µΩ.
-  - `CAL:T(1|2|PAUSE) {uint16}`:  Set DCIS timings for T<sub>1</sub>, T<sub>pause</sub> and T<sub>2</sub>, in (µs).
+  - `CAL:T(1|2|PAUSE) {uint16}`:  Set DCIS timings for T<sub>1</sub>, T<sub>2</sub>, and T<sub>pause</sub> (the pause time between the pulses), in (µs). T<sub>1</sub> must be between 100 and 500,  T<sub>2</sub> between 100 and 50000, and T<sub>pause</sub> between 5000 and 10000.
   - `CAL:PLF (50|60)`: Set power line Frequency (50 or 60).
   - `CAL:SAVE`: Save all cal values to EEPROM.
   - `DIAG:CAL?`: Show all active calibration values (may not be saved yet).
