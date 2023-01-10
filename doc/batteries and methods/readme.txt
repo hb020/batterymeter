@@ -1,0 +1,2 @@
+Respective rights of these documents are with their authors.
+All of these documents are freely available on the internet can be republished as far as I understand. If you object to the availability of one or more of these documents, contact me, and I will take them down.

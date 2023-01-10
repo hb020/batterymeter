@@ -1,0 +1,330 @@
+
+**** 06/18/21 15:11:25 ******* PSpice 17.4.0 (Nov 2018) ******* ID# 0 ********
+
+ ** Profile: "SCHEMATIC1-transient"  [ C:\Users\a0232292\Desktop\Models\TLV9062\PSpice_nano\TLV9062-PSpiceFiles\SCHEMATIC1\transient.
+
+
+ ****     CIRCUIT DESCRIPTION
+
+
+******************************************************************************
+
+
+
+
+** Creating circuit file "transient.cir" 
+** WARNING: THIS AUTOMATICALLY GENERATED FILE MAY BE OVERWRITTEN BY SUBSEQUENT SIMULATIONS
+
+*Libraries: 
+* Profile Libraries :
+* Local Libraries :
+.LIB "C:/Users/a0232292/Desktop/Models/Fixed_PSpice/Round2/name_reverted/TLV9062.LIB" 
+* From [PSPICE NETLIST] section of C:\SPB_Data\cdssetup\OrCAD_PSpiceTIPSpice_Install\17.4.0\PSpice.ini file:
+.lib "nom_pspti.lib" 
+.lib "nom.lib" 
+
+*Analysis directives: 
+.TRAN  0 1m 0 
+.OPTIONS ADVCONV
+.OPTIONS FILEMODELSEARCH
+.PROBE64 N([VO])
+.PROBE64 N([VIN])
+.INC "..\SCHEMATIC1.net" 
+
+
+
+**** INCLUDING SCHEMATIC1.net ****
+* source TLV9062
+V_V1         VCC 0 2.75
+V_V2         0 VEE 2.75
+X_U1         VIN VO VCC VEE VO TLV9062
+V_V3         VIN 0  
++SIN 0 1 1k 0 0 0
+
+**** RESUMING transient.cir ****
+.END
+
+**** 06/18/21 15:11:25 ******* PSpice 17.4.0 (Nov 2018) ******* ID# 0 ********
+
+ ** Profile: "SCHEMATIC1-transient"  [ C:\Users\a0232292\Desktop\Models\TLV9062\PSpice_nano\TLV9062-PSpiceFiles\SCHEMATIC1\transient.
+
+
+ ****     Diode MODEL PARAMETERS
+
+
+******************************************************************************
+
+
+
+
+               X_U1.Xi_nn.DVNF X_U1.Xi_np.DVNF X_U1.Xe_n.DVN   
+          IS  100.000000E-18  100.000000E-18  100.000000E-18 
+          KF  316.227800E-15  316.227800E-15   31.622780E-12 
+
+
+**** 06/18/21 15:11:25 ******* PSpice 17.4.0 (Nov 2018) ******* ID# 0 ********
+
+ ** Profile: "SCHEMATIC1-transient"  [ C:\Users\a0232292\Desktop\Models\TLV9062\PSpice_nano\TLV9062-PSpiceFiles\SCHEMATIC1\transient.
+
+
+ ****     Resistor MODEL PARAMETERS
+
+
+******************************************************************************
+
+
+
+
+               X_U1.R_NOISELESS 
+  T_Measured   27            
+   T_Current -273.15         
+           R    1            
+
+
+**** 06/18/21 15:11:25 ******* PSpice 17.4.0 (Nov 2018) ******* ID# 0 ********
+
+ ** Profile: "SCHEMATIC1-transient"  [ C:\Users\a0232292\Desktop\Models\TLV9062\PSpice_nano\TLV9062-PSpiceFiles\SCHEMATIC1\transient.
+
+
+ ****     Voltage Controlled Switch MODEL PARAMETERS
+
+
+******************************************************************************
+
+
+
+
+               X_U1.BB_SW      X_U1.ESD_SW     X_U1.OL_SW      X_U1.OR_SW      
+         RON   50              50               1.000000E-03     .01         
+        ROFF    1.000000E+12    1.000000E+12    1.000000E+09    1.000000E+09 
+         VON     .7              .25             .9             1.000000E-03 
+        VOFF    0               0                .8             0            
+
+
+               X_U1.S_VSWITCH_1 
+         RON   50            
+        ROFF    1.000000E+12 
+         VON     .5          
+        VOFF     .1          
+
+
+               X_U1.S_VSWITCH_2 
+         RON   50            
+        ROFF    1.000000E+12 
+         VON     .5          
+        VOFF     .1          
+
+
+               X_U1.S_VSWITCH_3 
+         RON   50            
+        ROFF    1.000000E+12 
+         VON     .5          
+        VOFF     .1          
+
+
+               X_U1.S_VSWITCH_4 
+         RON   50            
+        ROFF    1.000000E+12 
+         VON     .5          
+        VOFF     .1          
+
+
+               X_U1.S_VSWITCH_5 
+         RON     .01         
+        ROFF    1.000000E+12 
+         VON     .01         
+        VOFF    0            
+
+
+               X_U1.S_VSWITCH_6 
+         RON     .01         
+        ROFF    1.000000E+12 
+         VON     .01         
+        VOFF    0            
+
+
+               X_U1.S_VSWITCH_7 
+         RON    1.000000E-03 
+        ROFF    1.000000E+12 
+         VON     .5          
+        VOFF     .1          
+
+
+               X_U1.S_VSWITCH_8 
+         RON   50            
+        ROFF    1.000000E+12 
+         VON     .5          
+        VOFF     .1          
+
+
+               X_U1.S_VSWITCH_9 
+         RON   50            
+        ROFF    1.000000E+12 
+         VON     .5          
+        VOFF     .1          
+
+
+**** 06/18/21 15:11:25 ******* PSpice 17.4.0 (Nov 2018) ******* ID# 0 ********
+
+ ** Profile: "SCHEMATIC1-transient"  [ C:\Users\a0232292\Desktop\Models\TLV9062\PSpice_nano\TLV9062-PSpiceFiles\SCHEMATIC1\transient.
+
+
+ ****     INITIAL TRANSIENT SOLUTION       TEMPERATURE =   27.000 DEG C
+
+
+******************************************************************************
+
+
+
+ NODE   VOLTAGE     NODE   VOLTAGE     NODE   VOLTAGE     NODE   VOLTAGE
+
+
+(   VO) 301.8E-06  (  VCC)    2.7500  (  VEE)   -2.7500  (  VIN)    0.0000      
+
+(X_U1.21) 356.6E-06                   (X_U1.22) 356.6E-06                       
+
+(X_U1.23) 356.6E-06                   (X_U1.24)-5.503E-15                       
+
+(X_U1.25) 282.3E-06                   (X_U1.26) 282.3E-06                       
+
+(X_U1.27)-3.000E-12                   (X_U1.28)-3.000E-12                       
+
+(X_U1.29)-3.000E-12                   (X_U1.30)-3.000E-12                       
+
+(X_U1.31)    1.5004                   (X_U1.32)    1.5004                       
+
+(X_U1.33)   -1.4996                   (X_U1.34)   -1.4996                       
+
+(X_U1.35)     .0033                   (X_U1.36) 332.0E-06                       
+
+(X_U1.37)-5.503E-15                   (X_U1.38) 14.48E-09                       
+
+(X_U1.39) 301.8E-06                   (X_U1.40) 301.8E-06                       
+
+(X_U1.41)     .0033                   (X_U1.42)     .0033                       
+
+(X_U1.43)     .0033                   (X_U1.44)     .0033                       
+
+(X_U1.45) 511.2E-06                   (X_U1.46)     .0033                       
+
+(X_U1.47) 301.8E-06                   (X_U1.48)-9.758E-06                       
+
+(X_U1.49)    -.2732                   (X_U1.50) 9.758E-06                       
+
+(X_U1.51)     .2732                   (X_U1.52)-627.0E-21                       
+
+(X_U1.53)-10.45E-15                   (X_U1.54)   54.0000                       
+
+(X_U1.55)  -54.0000                   (X_U1.56)-1.760E-27                       
+
+(X_U1.57)-1.760E-27                   (X_U1.58)    1.5004                       
+
+(X_U1.59)   -1.4996                   (X_U1.60)   60.0000                       
+
+(X_U1.61)  -60.0000                   (X_U1.62) 356.6E-06                       
+
+(X_U1.63)-1.760E-27                   (X_U1.64)-1.760E-27                       
+
+(X_U1.65)-1.760E-27                   (X_U1.66)-1.760E-27                       
+
+(X_U1.67)-1.760E-27                   (X_U1.68)-1.760E-27                       
+
+(X_U1.69)    2.7000                   (X_U1.70)   -2.7000                       
+
+(X_U1.71)    2.7000                   (X_U1.72)   -2.7000                       
+
+(X_U1.73)-1.760E-27                   (X_U1.74)-1.760E-27                       
+
+(X_U1.75)-1.760E-27                   (X_U1.76)-1.760E-27                       
+
+(X_U1.77)-1.760E-27                   (X_U1.78) 453.3E-12                       
+
+(X_U1.79) 301.8E-06                   (X_U1.80) 356.6E-06                       
+
+(X_U1.81) 301.8E-06                   (X_U1.82)   -2.8500                       
+
+(X_U1.83)    2.8500                   (X_U1.84) 301.8E-06                       
+
+(X_U1.85)-1.760E-27                   (X_U1.86)   -2.7500                       
+
+(X_U1.87)    2.7500                   (X_U1.88) 282.3E-06                       
+
+(X_U1.89) 282.3E-06                   (X_U1.MID)-1.760E-27                      
+
+(X_U1.ESDn) 301.8E-06                 (X_U1.ESDp)-5.003E-15                     
+
+(X_U1.VCLP) 356.6E-06                 (X_U1.CLAMP) 356.6E-06                    
+
+(X_U1.SW_OL)-1.760E-27                (X_U1.VCC_B)    2.7500                    
+
+(X_U1.VEE_B)   -2.7500                (X_U1.VIMON) 453.3E-12                    
+
+(X_U1.VOUT_S) 301.8E-06               (X_U1.VSENSE) 356.6E-06                   
+
+(X_U1.Xe_n.3)    0.0000               (X_U1.Xe_n.4)    0.0000                   
+
+(X_U1.Xe_n.5)    0.0000               (X_U1.Xe_n.6)    0.0000                   
+
+(X_U1.Xe_n.7)     .8338               (X_U1.Xe_n.8)     .8338                   
+
+(X_U1.VCC_CLP)    2.7000              (X_U1.VEE_CLP)   -2.7000                  
+
+(X_U1.Xi_nn.3)    0.0000              (X_U1.Xi_nn.4)    0.0000                  
+
+(X_U1.Xi_nn.5)    0.0000              (X_U1.Xi_nn.6)    0.0000                  
+
+(X_U1.Xi_nn.7)     .8338              (X_U1.Xi_nn.8)     .8338                  
+
+(X_U1.Xi_np.3)    0.0000              (X_U1.Xi_np.4)    0.0000                  
+
+(X_U1.Xi_np.5)    0.0000              (X_U1.Xi_np.6)    0.0000                  
+
+(X_U1.Xi_np.7)     .8338              (X_U1.Xi_np.8)     .8338                  
+
+(X_U1.CL_CLAMP) 356.6E-06             (X_U1.CLAW_CLAMP) 356.6E-06               
+
+(X_U1.XVOS_VCM.1) 282.3E-06           
+
+
+
+
+    VOLTAGE SOURCE CURRENTS
+    NAME         CURRENT
+
+    V_V1        -5.380E-04
+    V_V2        -5.380E-04
+    V_V3        -5.003E-13
+    X_U1.V_GRp  -6.000E-11
+    X_U1.V_GRn   6.000E-11
+    X_U1.V_ISCp  -5.400E-11
+    X_U1.V_ISCn   5.400E-11
+    X_U1.V_ORn   0.000E+00
+    X_U1.V11     3.000E-12
+    X_U1.V_ORp   0.000E+00
+    X_U1.V12    -3.000E-12
+    X_U1.V4      4.533E-13
+    X_U1.VCM_MIN   2.850E-12
+    X_U1.VCM_MAX  -2.850E-12
+    X_U1.V_OS   -5.003E-13
+
+    TOTAL POWER DISSIPATION   2.96E-03  WATTS
+
+
+
+          JOB CONCLUDED
+
+**** 06/18/21 15:11:25 ******* PSpice 17.4.0 (Nov 2018) ******* ID# 0 ********
+
+ ** Profile: "SCHEMATIC1-transient"  [ C:\Users\a0232292\Desktop\Models\TLV9062\PSpice_nano\TLV9062-PSpiceFiles\SCHEMATIC1\transient.
+
+
+ ****     JOB STATISTICS SUMMARY
+
+
+******************************************************************************
+
+
+
+  License check-out time            =        1.55
+  Total job time (using Solver 1)   =         .81
+

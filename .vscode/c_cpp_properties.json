@@ -1,0 +1,17 @@
+{
+    "configurations": [
+        {
+            "name": "Mac",
+            "includePath": [
+                "${workspaceFolder}/**",
+                "/Users/hboot/Documents/personal/bricolage/HomeProjects/esp8266/esp8266_arduino/Libraries/**"
+            ],
+            "defines": [],
+            "macFrameworkPath": [],
+            "compilerPath": "",
+            "cStandard": "gnu17",
+            "cppStandard": "gnu++17"
+        }
+    ],
+    "version": 4
+}

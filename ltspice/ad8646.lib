@@ -1,0 +1,131 @@
+* AD8646 SPICE Macro-mode Typical Values
+* Description: Amplifier
+* Generic Desc: 2.7/5V, CMOS, OP, Fast, RRIO, 2X
+* Developed by: HH-S
+* Revision History: 08/10/2012 - Updated to new header style
+* 1.1 ( 07/2010) - Modify 1/f circuit
+* 1.0 (04/2008)
+* Copyright 2008, 2012 by Analog Devices
+*
+* Refer to http://www.analog.com/Analog_Root/static/techSupport/designTools/spiceModels/license/spice_general.html for License Statement.  Use of this model
+* indicates your acceptance of the terms and provisions in the License Statement.
+*
+* BEGIN Notes:
+*
+* Not Modeled:
+*    
+* Parameters modeled include:
+*
+* END Notes
+*
+* Node Assignments
+*                       noninverting input
+*                       |   inverting input
+*                       |   |    positive supply
+*                       |   |    |   negative supply
+*                       |   |    |   |   output
+*                       |   |    |   |   |
+*                       |   |    |   |   |
+.SUBCKT AD8646          1   2   99  50  45
+*
+* INPUT STAGE
+*
+M1   4  7  8  8 PIX L=2E-6 W=6.443E-03
+M2   6  2  8  8 PIX L=2E-6 W=6.443E-03
+M3  14  7 18 18 NIX L=2E-6 W=6.443E-03
+M4  16  2 18 18 NIX L=2E-6 W=6.443E-03
+RD1  4 50 1.818E+03
+RD2  6 50 1.818E+03
+RD3 99 14 1.818E+03
+RD4 99 16 1.818E+03
+C1   4  611 2.900E-13
+rcx1 611 6 3.8m
+C2  14 1611 2.900E-13
+rcx2 1611 16 3.8m 
+I1  99  8 2.20E-04
+I2  18 50 2.20E-04
+V1  99  9 1.117E+00
+V2  19 50 1.117E+00
+D1   8  9 DX
+D2  19 18 DX
+EOS  7  1 POLY(4) (73,98) (22,98) (81,98) (83,98) 6.00E-04 1 1 1 1
+IOS  1  2 2.50E-11
+*
+*CMRR=90dB, POLE AT 12000 Hz
+*
+E1  72 98 POLY(2) (1,98) (2,98) 0 9.438E-02 9.438E-02
+R10 72 73 1.326E+01
+R20 73 98 2.274E-03
+C10 72 73 1.000E-06
+*
+* PSRR=80dB, POLE AT 7000 Hz
+*
+EPSY 21 98 POLY(1) (99,50) -14.865E+00 2.973E-00
+RPS1 21 22 4.301E+01
+RPS2 22 98 1.447E-03
+CPS1 21 22 1.000E-06
+*
+* VOLTAGE NOISE REFERENCE OF 6nV/rt(Hz)
+*
+VN1 80 98 0
+RN1 80 98 20.70E-3
+HN  81 98 VN1 6.20E+00
+RN2 81 98 1
+*
+* FLICKER NOISE CORNER = 900 Hz
+*
+DFN 82 98 DNOISE 1000
+IFN 98 82 DC 1E-03
+DFN2 182 98 DY
+IFN2 98 182 DC 1E-06
+*VFN 82a 98 DC 0.0
+*VFN 82 98 DC 0.6551
+GFN 83 98 POLY(1) (182,82) 1.00E-13 1.00E-01
+*HFN 83 98 POLY(1) VFN 1.00E-03 1.00E+00
+RFN 83 98 1
+*
+* INTERNAL VOLTAGE REFERENCE
+*
+EREF 98  0 POLY(2) (99,0) (50,0) 0 0.5 0.5
+GSY  99 50 POLY(1) (99,50) -308.0E-06 78.0E-06
+EVP  97 98 (99,50) 0.5
+EVN  51 98 (50,99) 0.5
+*
+* GAIN STAGE
+*
+G1 98 30 POLY(2) (4,6) (14,16) 0 4.574E-04 4.574E-04
+R1 30 98 1.00E+06
+CF 30 31 2.400E-11
+RZ 45 31 3.221E+01
+V3 32 30 1.108E+00
+V4 30 33 1.193E-00
+D3 32 97 DX
+D4 51 33 DX
+*
+* OUTPUT STAGE
+*
+M5  455 46 99 99 POX L=1E-6 W=6.079E-03
+M6  455 47 50 50 NOX L=1E-6 W=5.983E-03
+EG1 99 46 POLY(1) (98,30) 5.115E-01 1
+EG2 47 50 POLY(1) (30,98) 5.130E-01 1
+Lout 45 455 1nH
+*
+* MODELS
+*
+.MODEL POX PMOS (LEVEL=2,KP=1.00E-05,VTO=-0.328,LAMBDA=0.01,RD=0)
+.MODEL NOX NMOS (LEVEL=2,KP=1.00E-05,VTO=+0.328,LAMBDA=0.01,RD=0)
+.MODEL PIX PMOS (LEVEL=2,KP=1.00E-05,VTO=-0.5,LAMBDA=0.01)
+.MODEL NIX NMOS (LEVEL=2,KP=1.00E-05,VTO=0.5,LAMBDA=0.01)
+.MODEL DX D(IS=1E-14,RS=0.1)
+.MODEL DY D(IS=1E-16,RS=0.1)
+.MODEL DNOISE D(IS=1E-16,RS=0,KF=3.85E-12)
+*.MODEL DNOISE D(IS=1E-14,RS=0,KF=2.580E-11)
+*
+*
+.ENDS AD8646
+*
+*$
+
+
+
+

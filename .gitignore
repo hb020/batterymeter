@@ -1,0 +1,10 @@
+oled_test/__pycache__/*
+.DS_Store
+testscripts/*.csv
+kicad/batterymeter/batterymeter-backups/*
+kicad/impedance_testboard/impedance_testboard-backups/*
+kicad/YR1035Plus/YR1035Plus-backups/*
+testscripts/__pycache__/*
+*/.DS_Store
+kicad/batterymeter/archive_v1.1/batterymeter-backups/*
+

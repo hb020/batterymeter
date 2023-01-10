@@ -1,0 +1,23 @@
+** Profile: "SCHEMATIC1-transient"  [ C:\Users\a0232292\Desktop\Models\TLV9062\PSpice_nano\TLV9062-PSpiceFiles\SCHEMATIC1\transient.sim ] 
+
+** Creating circuit file "transient.cir" 
+** WARNING: THIS AUTOMATICALLY GENERATED FILE MAY BE OVERWRITTEN BY SUBSEQUENT SIMULATIONS
+
+*Libraries: 
+* Profile Libraries :
+* Local Libraries :
+.LIB "C:/Users/a0232292/Desktop/Models/Fixed_PSpice/Round2/name_reverted/TLV9062.LIB" 
+* From [PSPICE NETLIST] section of C:\SPB_Data\cdssetup\OrCAD_PSpiceTIPSpice_Install\17.4.0\PSpice.ini file:
+.lib "nom_pspti.lib" 
+.lib "nom.lib" 
+
+*Analysis directives: 
+.TRAN  0 1m 0 
+.OPTIONS ADVCONV
+.OPTIONS FILEMODELSEARCH
+.PROBE64 N([VO])
+.PROBE64 N([VIN])
+.INC "..\SCHEMATIC1.net" 
+
+
+.END

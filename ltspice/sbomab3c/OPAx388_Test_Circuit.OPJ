@@ -1,0 +1,235 @@
+(ExpressProject "OPAx388_Test_Circuit"
+  (ProjectVersion "19981106")
+  (SoftwareVersion "17.4-2019 S024 (3998392)  [12/6/2021]-[01/06/22]")
+  (ProjectType "Analog or A/D Mixed Mode")
+  (Folder "Design Resources"
+    (Folder "Library"
+      (File ".\opax388.olb"
+        (Type "Schematic Library")))
+    (NoModify)
+    (File "opax388_test_circuit.dsn"
+      (Type "Schematic Design"))
+    (BuildFileAddedOrDeleted "x")
+    (CompileFileAddedOrDeleted "x")
+    (PSPICE_Regenerate_Netlist_Flag "FALSE")
+    (DOCKED "TRUE")
+    (DOCKING_POSITION "61215")
+    (Display_Online_DRC_Results "FALSE")
+    (DRC_Scope "0")
+    (DRC_Action "0")
+    (DRC_Create_Warnings "TRUE")
+    (DRC_View_Output "TRUE")
+    (DRC_View_Output_Type "2")
+    (DRC_Preserved_Waived "FALSE")
+    (RUN_Online_Rules "FALSE")
+    (DRC_Run_Electrical_Rules "TRUE")
+    (DRC_Check_Single_Node_Nets "TRUE")
+    (DRC_Check_No_Driving_Source "TRUE")
+    (DRC_Check_Duplicate_NetNames "TRUE")
+    (DRC_Check_Off-Page_Connectors "FALSE")
+    (DRC_Check_Ports "FALSE")
+    (DRC_Check_Unconnected_Nets "TRUE")
+    (DRC_Check_Floating_Pins "TRUE")
+    (DRC_SDT_Compatibility "FALSE")
+    (DRC_Check_Single_Node_Nets_Online "FALSE")
+    (DRC_Check_No_Driving_Source_Online "FALSE")
+    (DRC_Check_Duplicate_NetNames_Online "FALSE")
+    (DRC_Check_Off-Page_Connectors_Online "FALSE")
+    (DRC_Check_Ports_Online "FALSE")
+    (DRC_Check_Unconnected_Nets_Online "FALSE")
+    (DRC_Check_Floating_Pins_Online "FALSE")
+    (DRC_Run_Electrical_Reports "TRUE")
+    (DRC_Report_Netnames "FALSE")
+    (DRC_Report_Off-grid_Objects "FALSE")
+    (DRC_Report_Ports_and_Off-page_Connectors "FALSE")
+    (DRC_Check_for_Misleading_TAP "FALSE")
+    (DRC_Run_Physical_Rules "TRUE")
+    (DRC_Check_Physical_Power_Pins_Visibility "TRUE")
+    (DRC_Check_PCB_Footprint_Property "TRUE")
+    (DRC_Check_Normal_Convert_View_Sync "TRUE")
+    (DRC_Check_Incorrect_PinGroup_Assignment "TRUE")
+    (DRC_Check_High_Speed_Props_Syntax "TRUE")
+    (DRC_Check_Missing_Pin_Numbers "TRUE")
+    (DRC_Check_Device_With_No_Pins "TRUE")
+    (DRC_Check_Power_Ground_Short "TRUE")
+    (DRC_Check_Name_Prop_For_HierBlocks "TRUE")
+    (DRC_Check_Physical_Power_Pins_Visibility_Online "FALSE")
+    (DRC_Check_PCB_Footprint_Property_Online "FALSE")
+    (DRC_Check_Normal_Convert_View_Sync_Online "FALSE")
+    (DRC_Check_Incorrect_PinGroup_Assignment_Online "FALSE")
+    (DRC_Check_Missing_Pin_Numbers_Online "FALSE")
+    (DRC_Check_Device_With_No_Pins_Online "FALSE")
+    (DRC_Check_Power_Ground_Short_Online "FALSE")
+    (DRC_Check_Name_Prop_For_HierBlocks_Online "FALSE")
+    (DRC_Run_Physical_Reports "TRUE")
+    (DRC_Visible_Power_pins "FALSE")
+    (DRC_Report_Unused_Part_Packages "TRUE")
+    (DRC_Type_Mismatch "TRUE")
+    (DRC_Identical_References "TRUE")
+    (DRC_Run_Custom_Rules "FALSE")
+    (DRC_Report_File
+       "C:\USERS\A0870489\DOWNLOADS\OPAX192_PSPICE_MODEL\OPAX192_TEST_CIRCUIT.DRC")
+    (RootChangedForceReNetlist "x"))
+  (Folder "Layout")
+  (Folder "Outputs")
+  (Folder "PSpice Resources"
+    (Folder "Simulation Profiles"
+      (File.PSpice.{09528990-3187-11D2-BC7B-00A0C90CBF91}
+         ".\opax388_test_circuit-pspicefiles\schematic\aol_gain.sim"
+        (DisplayName "SCHEMATIC-Aol_Gain")
+        (Type "PSpice Profile"))
+      (File.PSpice.{09528990-3187-11D2-BC7B-00A0C90CBF91}
+         ".\opax388_test_circuit-pspicefiles\schematic\trans.sim"
+        (DisplayName "SCHEMATIC-TRANS")
+        (Type "PSpice Profile"))
+      (ActiveProfile ".\opax388_test_circuit-pspicefiles\schematic\trans.sim"))
+    (Folder "Model Libraries"
+      (Sort User)
+      (File ".\opax388.lib"
+        (Type "PSpiceLibrary")
+        (DisplayName ".\opax388.lib")))
+    (Folder "Stimulus Files"
+      (Sort User))
+    (Folder "Include Files"
+      (Sort User)))
+  (DefaultLibraryBrowseDirectory "library\PSpice")
+  (PartMRUSelector
+    (OPAx388
+      (FullPartName "OPAx388.Normal")
+      (LibraryName
+         "C:\ELABTRANS_WS\ELABTRANS_DS\PART_NUMBERS\OPAX388\OPAX388_TEST\T1\OPAX388.OLB")
+      (DeviceIndex "0"))
+    (LMC646x
+      (FullPartName "LMC646x.Normal")
+      (LibraryName
+         "C:\ELABTRANS_WS\ELABTRANS_DS\PART_NUMBERS\LMC646X\LMC646X_TEST\T1\LMC646X.OLB")
+      (DeviceIndex "0"))
+    (LMC608x
+      (FullPartName "LMC608x.Normal")
+      (LibraryName
+         "C:\ELABTRANS_WS\ELABTRANS_DS\PART_NUMBERS\LMC608X\LMC608X_TEST\T1\LMC608X.OLB")
+      (DeviceIndex "0"))
+    (LMC606x
+      (FullPartName "LMC606x.Normal")
+      (LibraryName
+         "C:\ELABTRANS_WS\ELABTRANS_DS\PART_NUMBERS\LMC606X\LMC606X_TEST\T1\LMC606X.OLB")
+      (DeviceIndex "0"))
+    (LMV84x
+      (FullPartName "LMV84x.Normal")
+      (LibraryName
+         "C:\ELABTRANS_WS\ELABTRANS_DS\PART_NUMBERS\LMV84X\LMV84X_TEST\T1\LMV84X.OLB")
+      (DeviceIndex "0"))
+    (LMP770x
+      (FullPartName "LMP770x.Normal")
+      (LibraryName
+         "C:\ELABTRANS_WS\ELABTRANS_DS\PART_NUMBERS\LMP770X\LMP770X_TEST\T1\LMP770X.OLB")
+      (DeviceIndex "0"))
+    (OPA1622
+      (FullPartName "OPA1622.Normal")
+      (LibraryName
+         "C:\ELABTRANS_WS\ELABTRANS_DS\PART_NUMBERS\OPA1622\OPA1622_TEST\T1\OPA1622.OLB")
+      (DeviceIndex "0"))
+    (OPAx188
+      (FullPartName "OPAx188.Normal")
+      (LibraryName
+         "C:\ELABTRANS_WS\ELABTRANS_DS\PART_NUMBERS\OPAX188\OPAX188_TEST\T1\OPAX188.OLB")
+      (DeviceIndex "0"))
+    (OPAx189
+      (FullPartName "OPAx189.Normal")
+      (LibraryName
+         "C:\ELABTRANS_WS\ELABTRANS_DS\PART_NUMBERS\OPAX189\OPAX189_TEST\T1\OPAX189.OLB")
+      (DeviceIndex "0"))
+    (LMP201x
+      (FullPartName "LMP201x.Normal")
+      (LibraryName
+         "C:\ELABTRANS_WS\ELABTRANS_DS\PART_NUMBERS\LMP201X\LMP201X_TEST\T1\LMP201X.OLB")
+      (DeviceIndex "0"))
+    (OPAx182
+      (FullPartName "OPAx182.Normal")
+      (LibraryName
+         "C:\ELABTRANS_WS\ELABTRANS_DS\PART_NUMBERS\OPAX182\OPAX182_TEST\T1\OPAX182.OLB")
+      (DeviceIndex "0"))
+    (OPAx328
+      (FullPartName "OPAx328.Normal")
+      (LibraryName
+         "C:\ELABTRANS_WS\ELABTRANS_DS\PART_NUMBERS\OPAX328\OPAX328_TEST\T2\OPAX328.OLB")
+      (DeviceIndex "0"))
+    (OPAx228
+      (FullPartName "OPAx228.Normal")
+      (LibraryName
+         "C:\ELABTRANS_WS\ELABTRANS_DS\PART_NUMBERS\OPAX228\OPAX228_QC\RELEASE_SANKALP\PSPICE\OPAX228_PSPICE_AIO\OPAX228.OLB")
+      (DeviceIndex "0"))
+    (OPAx387
+      (FullPartName "OPAx387.Normal")
+      (LibraryName
+         "C:\ELABTRANS_WS\ELABTRANS_DS\PART_NUMBERS\OPAX387\OPAX387_TEST\T1\OPAX387.OLB")
+      (DeviceIndex "0"))
+    (VDC
+      (FullPartName "VDC.Normal")
+      (LibraryName
+         "C:\CADENCE\SPB_17.4\TOOLS\CAPTURE\LIBRARY\PSPICE\SOURCE.OLB")
+      (DeviceIndex "0"))
+    (C
+      (FullPartName "C.Normal")
+      (LibraryName
+         "C:\CADENCE\SPB_17.4\TOOLS\CAPTURE\LIBRARY\PSPICE\ANALOG.OLB")
+      (DeviceIndex "0"))
+    (VSIN
+      (FullPartName "VSIN.Normal")
+      (LibraryName
+         "C:\CADENCE\SPB_17.4\TOOLS\CAPTURE\LIBRARY\PSPICE\SOURCE.OLB")
+      (DeviceIndex "0"))
+    (OPAx227
+      (FullPartName "OPAx227.Normal")
+      (LibraryName
+         "C:\ELABTRANS_WS\ELABTRANS_DS\PART_NUMBERS\OPAX227\OPAX227_TEST\T1\OPAX227.OLB")
+      (DeviceIndex "0"))
+    (OPAx211
+      (FullPartName "OPAx211.Normal")
+      (LibraryName
+         "C:\ELABTRANS_WS\ELABTRANS_DS\PART_NUMBERS\OPAX211\OPAX211_TEST\T1\OPAX211.OLB")
+      (DeviceIndex "0"))
+    (OPAx211A
+      (FullPartName "OPAx211A.Normal")
+      (LibraryName
+         "C:\ELABTRANS_WS\ELABTRANS_DS\PART_NUMBERS\OPAX211\OPAX211A_TEST\T1\OPAX211A.OLB")
+      (DeviceIndex "0"))
+    (OPAx192
+      (FullPartName "OPAx192.Normal")
+      (LibraryName
+         "C:\ELABTRANS_WS\ELABTRANS_DS\PART NUMBERS\OPAX192\OPAX192_TEST\TEST2\OPAX192.OLB")
+      (DeviceIndex "0"))
+    (OPAx196
+      (FullPartName "OPAx196.Normal")
+      (LibraryName
+         "C:\ELABTRANS_WS\ELABTRANS_DS\PART NUMBERS\OPAX196\OPAX196_TEST\TEST2\OPAX196_PSPICE_AIO\OPAX196.OLB")
+      (DeviceIndex "0"))
+    (R
+      (FullPartName "R.Normal")
+      (LibraryName
+         "C:\CADENCE\SPB_17.4\TOOLS\CAPTURE\LIBRARY\PSPICE\ANALOG.OLB")
+      (DeviceIndex "0"))
+    (OPA161x
+      (FullPartName "OPA161x.Normal")
+      (LibraryName
+         "C:\ELABTRANS_WS\ELABTRANS_DS\PART NUMBERS\OPA161X\OPA161X_TEST\TEST1\OPA161X_PSPICE\OPA161X.OLB")
+      (DeviceIndex "0"))
+    (OPA167x
+      (FullPartName "OPA167x.Normal")
+      (LibraryName
+         "C:\ELABTRANS_WS\ELABTRANS_DS\PART NUMBERS\OPA167X\OPA167X_TEST\TEST1\OPA167X_PSPICE_AIO\OPA167X.OLB")
+      (DeviceIndex "0")))
+  (LastUsedLibraryBrowseDirectory
+     "C:\ELABTRANS_WS\ELABTRANS_DS\Part_Numbers\OPAx388\OPAx388_Test\T1")
+  (MPSSessionName "x1057702")
+  (Folder "Logs")
+  (GlobalState
+    (FileView
+      (Path "Design Resources")
+      (Path "Outputs"))
+    (HierarchyView)
+    (Doc
+      (Type "COrCapturePMDoc")
+      (Frame
+        (Placement "44 0 1 -1 -1 -1 -1 0 1231 0 506"))
+      (Tab 0))))

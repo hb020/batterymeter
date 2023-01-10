@@ -1,0 +1,169 @@
+*********************************************************************
+*  (C)  Copyright  TOSHIBA CORPORATION  2016
+*  Date                 :20/09/2016
+*  File Name            :SSM6K405TU.lib
+*  Part Number          :SSM6K405TU
+*  Parameter Ver.       :Ver.1
+*  Simulator            :PSpice
+*  Model Call Name      :NMOS_SSM6K405TU
+*  TNOM                 :25 degree
+*  Pin Assign           :1=Drain 2=Gate 3=Source
+*
+* This PSpice model is provided with OLB file. The symbol is
+* simplified for PSpice simulation. It is different from original
+* device. Please check the technical data sheet or Toshiba website.
+*
+* The Pin assignment of this PSpice model is for PSpice simulation
+* only. It is different from actual device. Please check the technical
+* data sheet or Toshiba website.
+*********************************************************************
+.SUBCKT NMOS_SSM6K405TU 1 2 3
+M0 1 22 3 3 SSM6K405TU_MOS
++ L = 5E-006
++ W = 0.1146
++ AD = 1.146E-007
++ AS = 1.146E-007
++ PD = 0.2292
++ PS = 0.2292
+D0 3 1 SSM6K405TU_DDS1
+D1 3 1 SSM6K405TU_DDS2
+D2 22 10 SSM6K405TU_DGS1
+D3 3 10 SSM6K405TU_DGS2
+R1 10 3 1E+009
+R2 10 22 1E+009
+RG 2 22 12
+.MODEL SSM6K405TU_MOS NMOS(
++ LEVEL = 7
++ MOBMOD = 1
++ CAPMOD = 3
++ NOIMOD = 1
++ TOX = 1.5E-008
++ XJ = 1.5E-007
++ NCH = 1.7E+017
++ NGATE = 0
++ RSH = 0
++ TNOM = 25
++ VTH0 = 0.8625
++ VOFF = -0.08
++ NFACTOR = 1.337
++ U0 = 3064
++ K1 = 0.5
++ K2 = 0
++ K3 = 80
++ K3B = 0
++ W0 = 2.5E-006
++ NLX = 1.74E-007
++ DVT0 = 2.2
++ DVT1 = 0.53
++ DVT2 = -0.032
++ DVT0W = 0
++ DVT1W = 5.3E+006
++ DVT2W = -0.032
++ DWG = 0
++ DWB = 0
++ UA = 1.498E-009
++ UB = 5.87E-019
++ UC = -4.56E-011
++ VSAT = 1.341E+005
++ A0 = 0.3335
++ AGS = 0.5552
++ B0 = 0
++ B1 = 0
++ KETA = -0.047
++ A1 = 0
++ A2 = 1
++ DELTA = 0.01923
++ RDSW = 6834
++ PRWG = 0
++ PRWB = 0
++ WR = 1
++ CDSC = 0.00024
++ CDSCD = 0
++ CDSCB = 0
++ CIT = 0
++ ETA0 = 0.08
++ ETAB = -0.07
++ DSUB = 0.56
++ PCLM = 1.3
++ PDIBLC1 = 0.39
++ PDIBLC2 = 0.001
++ PDIBLCB = 0
++ DROUT = 0.56
++ PSCBE1 = 4.24E+008
++ PSCBE2 = 1E-012
++ PVAG = 0
++ ALPHA0 = 0
++ ALPHA1 = 0
++ BETA0 = 30
++ NJ = 1
++ JS = 0
++ XPART = 0
++ CGSO = 8.247E-009
++ CGDO = 1E-011
++ CGBO = 0
++ CGDL = 3.082E-008
++ CGSL = 5.408E-011
++ CKAPPA = 0.4188
++ CF = 1E-012
++ CLC = 1E-007
++ CLE = 0.6
++ VOFFCV = 0
++ NOFF = 1
++ DLC = 0
++ ACDE = 1
++ MOIN = 15
++ CJ = 1E-012
++ CJSW = 1E-012
++ CJSWG = 1E-012
++ PB = 1
++ PBSW = 1
++ PBSWG = 1
++ MJ = 0.5
++ MJSW = 0.33
++ MJSWG = 0.33
++ AF = 1
++ EF = 1
++ KF = 0
++ UTE = -2.5
++ KT1 = -0.55
++ KT1L = 0
++ KT2 = 0.022
++ UA1 = 1E-009
++ UB1 = -7.61E-018
++ UC1 = -5.6E-011
++ AT = 3.3E+004
++ PRT = 5000
++ XTI = 3
++ TCJ = 0
++ TPB = 0
++ TCJSW = 0
++ TPBSW = 0
++ TCJSWG = 0
++ TPBSWG = 0
++ DWC = 0.05)
+.MODEL SSM6K405TU_DDS1 D(
++ TNOM = 25
++ IS = 2.1E-012
++ RS = 0.07428
++ N = 1.16
++ CJO = 1.615E-011
++ VJ = 0.5479
++ M = 0.563
++ BV = 20
++ XTI = 5)
+.MODEL SSM6K405TU_DDS2 D(
++ TNOM = 25
++ IS = 2.1E-012
++ RS = 0.07428
++ N = 1.16
++ CJO = 1.615E-011
++ VJ = 0.5479
++ M = 0.563
++ XTI = 5)
+.MODEL SSM6K405TU_DGS1 D(
++ TNOM = 25
++ IS = 1E-014)
+.MODEL SSM6K405TU_DGS2 D(
++ TNOM = 25
++ IS = 1E-014)
+.ENDS
