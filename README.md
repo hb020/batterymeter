@@ -193,7 +193,7 @@ The pulses are spaced out by a small relaxation time. The voltage drop over the 
 - for T<sub>2</sub>: V<sub>drop</sub> / I<sub>pulse</sub> = R<sub>b</sub> + R<sub>SEI</sub>
 - for T<sub>3</sub>: V<sub>drop</sub> / I<sub>pulse</sub> = R<sub>b</sub> + R<sub>SEI</sub> + R<sub>ct</sub>
 
-Unfortunately, I will want to do multiple measurements to drown out noise and do power line frequency compensation. That makes T<sub>3</sub> unsuited for my tool, amd I must limit myself to  R<sub>b</sub> and R<sub>SEI</sub>.
+Unfortunately, I will want to do multiple measurements to drown out noise and do power line frequency compensation. That makes T<sub>3</sub> unsuited for my tool, and I must limit myself to  R<sub>b</sub> and R<sub>SEI</sub>.
 
 ### Adaptation to other battery layouts or chemistries
 
