@@ -367,13 +367,14 @@ The following SCPI commands are supported:
 - `SYST:DIAG:(ON|OFF)`: activate or deactivate diagnostic output. Once set, it prints additional info after a measurement, even when going back to "local" control.
 - `MEAS:VOLT:(INP|INT|AC|DCIS)?`: various measurements, one per command.
   - `INP`: input (test) voltage
-  - `INT`: internal battery voltage
+  - `INT`: internal battery voltage and battery gauge percentage
   - `AC`: 1kHz impedance: R<sub>~</sub>
   - `DCIS`: R<sub>B</sub> and R<sub>SEI</sub>
 - `CONF:RANGE (AUTO|1|2|3|4)`: Set the current range.
 - `CONF:RANGE?`: Get the current range.
 - Calibration commands:
   - `CAL:INPV {uint16}`: Set input voltage multiplication factor (mV@1V).
+  - `CAL:INPO {int16}`: Set input ADC offset (between +500 and -500). Best is to define INPV and INPO via fitting, to compensate for some small non-linearities.
   - `CAL:INTV {uint16}`: Set internal voltage multiplication factor (mV@1V).
   - `CAL:VMIN {uint16}`: Set internal battery range min (mV).
   - `CAL:VMAX {uint16}`: Set internal battery range max (mV).

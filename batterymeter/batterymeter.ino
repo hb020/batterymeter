@@ -50,7 +50,7 @@
 #define NO_MAIN
 #endif
 
-#define SW_VERSION "0.9b"
+#define SW_VERSION "0.9c"
 
 const char *AppName = "Batterymeter " SW_VERSION;
 
@@ -243,6 +243,7 @@ struct Settings {
     uint8_t version;
     uint16_t iInternalVoltageMilliVoltAt1V;  // millivolts for 1 V theoretical ADC input
     uint16_t iInputVoltageMilliVoltAt1V;     // millivolts for 1 V theoretical ADC input
+    int16_t  iInputVoltageOffset;            // ADC volts input offset
     uint16_t iRange0_1mOhms;                 // reference resistor 100uA range, times 1mOhm
     uint16_t iRange1_100uOhms;               // reference resistor 1mA range, times 100uOhm
     uint16_t iRange2_10uOhms;                // reference resistor 10mA range, times 10uOhm
@@ -305,7 +306,8 @@ void readSettings(void) {
         // 1.00
         // 10.03
         mySettings.iInternalVoltageMilliVoltAt1V = 1000;
-        mySettings.iInputVoltageMilliVoltAt1V = 10030;
+        mySettings.iInputVoltageMilliVoltAt1V = 10045;
+        mySettings.iInputVoltageOffset = 60;
 
         // 45	47,018
         // 5	4,9771
@@ -404,7 +406,7 @@ double settingsGetDCScale(uint8_t input, int *pOffset) {
     // get the scales from EEPROM
     if (input == adcin_input) {
         if (pOffset)
-            *pOffset = 0;
+            *pOffset = mySettings.iInputVoltageOffset;
         return mySettings.iInputVoltageMilliVoltAt1V / 1000.0;
     } else {
         if (pOffset)
@@ -2088,7 +2090,8 @@ double getExternalVoltage(void);
 double runDCSample(uint8_t input, int offset, double scale) {
     int32_t rawv = 0;
 #define ADC_RESOLUTION 16
-    const int32_t adc_max_val_single = (1UL << ADC_RESOLUTION);  // ADC_RESOLUTION bits, unsigned
+// ADC_RESOLUTION bits, unsigned
+#define adc_max_val_single (1UL << ADC_RESOLUTION)
 
     // set multiplexer
     setADCInMode(input);
@@ -2100,9 +2103,11 @@ double runDCSample(uint8_t input, int offset, double scale) {
     // Then read correctly
     rawv = analogReadEnh(ADC_DC, ADC_RESOLUTION, 0);
 
-    // TODO: allow raw value to be exposed for calibration
+    // debug statements that allow raw value to be exposed for calibration:
+    // But note that the ADC is not highly linear. Best to measure several values and define the offset and scale via fitting.
 
-    // Serial.printf("2: ADC_MAX_SCALE_MV: %d, rawv: %ld; offset:%d, scale: %f, adc_max_val_single: %ld ",ADC_MAX_SCALE_MV,(long)rawv,offset,(float)scale,(long)adc_max_val_single);
+    //Serial.printf("2: ADC_MAX_SCALE_MV: %d, rawv: %ld; offset:%d, scale: %f, adc_max_val_single: %ld ",ADC_MAX_SCALE_MV,(long)rawv,offset,(float)scale,(long)adc_max_val_single);
+    // if (offset != 0) Serial.printf("rawv: %ld\n",rawv);
     return (float)ADC_MAX_SCALE_MV * (scale / 1000.0) * (float)(rawv - offset) / adc_max_val_single;
 }
 
@@ -2740,25 +2745,14 @@ void screenPrintV(double v) {
     // There is no ranging here, so just 1 format
     oled.setFont(SCREEN_BIGFONT);
     oled.setCursor(SCREEN_START_COLUMN_VALUE, line);
-    if ((v >= VOLT_MIN) && (v < VOLT_MAX)) {
+    if (v < VOLT_MAX) {
+        if (v < VOLT_MIN)
+            v = VOLT_MIN;
         sprintf(str, "%5.2f", v);
         oled.print(str);
     } else {
-        // over or underflow
-        char ch;
-        if (v < VOLT_MIN) {
-            ch = '-';
-        } else {
-            ch = '+';
-        }
-        str[0] = ch;
-        str[1] = ch;
-        str[2] = ch;
-        str[3] = ch;
-        str[4] = ch;
-        str[5] = ch;
-        str[6] = 0;
-        oled.print(str);
+        // overflow
+        oled.print("++++++");
     }
     // now print the unit
     const char *unit = "V";
@@ -3571,19 +3565,20 @@ const scpiCmdDefinition scpiCmdDefinitions[] = {
     {"*IDN?", "Identify", &scpiCmdIdentify},
     {"*HELP?", "Usage", &scpiCmdUsage},
     {"SYST:ERR?", "Last error message", &scpiCmdGetLastEror},
-    {"SYST:DIAG:ON", "Activate diagnostic output", &scpiCmdSetDiag},
-    {"SYST:DIAG:OFF", "Deactivate diagnostic output", &scpiCmdSetDiag},
-    {"MEAS:VOLT:INP?", "Measure input voltage", &scpiCmdMeasureV},
-    {"MEAS:VOLT:INT?", "Measure internal voltage", &scpiCmdMeasureV},
-    {"MEAS:RES:AC?", "Measure 1kHz input impedance", &scpiCmdMeasureR},
-    {"MEAS:RES:DCIS?", "Measure DCIS impedance values.", &scpiCmdMeasureR},
+    {"SYST:DIAG:ON", "Diagnostic output on", &scpiCmdSetDiag},
+    {"SYST:DIAG:OFF", "Diagnostic output off", &scpiCmdSetDiag},
+    {"MEAS:VOLT:INP?", "Input voltage", &scpiCmdMeasureV},
+    {"MEAS:VOLT:INT?", "Internal voltage", &scpiCmdMeasureV},
+    {"MEAS:RES:AC?", "1kHz input impedance", &scpiCmdMeasureR},
+    {"MEAS:RES:DCIS?", "DCIS impedance values.", &scpiCmdMeasureR},
     {"CONF:RANGE", "{AUTO|1..4} \tSet current range", &scpiCmdSetRange},
-    {"CONF:RANGE?", "Get current range set", &scpiCmdQueryRange},
-    {"CAL:INPV", "{NR1} \tSet input voltage multiplication factor (mV@1V)", &scpiCmdSetCAL},
-    {"CAL:INTV", "{NR1} \tSet internal voltage multiplication factor (mV@1V)", &scpiCmdSetCAL},
-    {"CAL:VMIN", "{NR1} \tSet internal battery range min (mV)", &scpiCmdSetCAL},
-    {"CAL:VMAX", "{NR1} \tSet internal battery range max (mV)", &scpiCmdSetCAL},
-    {"CAL:R#", "{NR1} \t# = 1..4 \tSet reference resistor value (1:mOhm..4:uOhm)", &scpiCmdSetCAL},
+    {"CONF:RANGE?", "Get current range", &scpiCmdQueryRange},
+    {"CAL:INPV", "{NR1} \tSet input V factor (mV@1V)", &scpiCmdSetCAL},
+    {"CAL:INPO", "{NR1} \tSet input V offset", &scpiCmdSetCAL},
+    {"CAL:INTV", "{NR1} \tSet internal V factor (mV@1V)", &scpiCmdSetCAL},
+    {"CAL:VMIN", "{NR1} \tSet internal V gauge min (mV)", &scpiCmdSetCAL},
+    {"CAL:VMAX", "{NR1} \tSet internal V gauge max (mV)", &scpiCmdSetCAL},
+    {"CAL:R#", "{NR1} \t# = 1..4 \tSet ref resistor (1:mOhm..4:uOhm)", &scpiCmdSetCAL},
     {"CAL:T#", "{NR1} \t# = 1,2,PAUSE \tSet DCIS timings (us)", &scpiCmdSetCAL},
     {"CAL:PLF", "{NR1} \tSet power line Frequency (50 or 60)", &scpiCmdSetCAL},
     {"CAL:SAVE","Save cal values",&scpiCmdSaveCAL},
@@ -4022,6 +4017,14 @@ void scpiCmdSetCAL(SCPI_C commands, SCPI_P parameters, Stream &interface) {
                 mySettings.iInputVoltageMilliVoltAt1V = v;
                 return;
             }
+            if (header.startsWith("INPO")) {
+                if (v < -500)
+                    v = -500;
+                if (v > 500)
+                    v = 500;
+                mySettings.iInputVoltageOffset = v;
+                return;
+            }            
             if (header.startsWith("INTV")) {
                 mySettings.iInternalVoltageMilliVoltAt1V = v;
                 return;
@@ -4090,10 +4093,11 @@ void scpiCmdQueryCAL(SCPI_C commands, SCPI_P parameters, Stream &interface) {
 
     setRemoteControl();
       
-    interface.printf("version=%d, intv=%u, inpv=%u, r1=%u, r2=%u, r3=%u, r4=%u, t1=%u, t2=%lu, tpause=%u, plf=%u, vmin=%u, vmax=%u\n",
+    interface.printf("version=%d, intv=%u, inpv=%u, inpv=%d, r1=%u, r2=%u, r3=%u, r4=%u, t1=%u, t2=%lu, tpause=%u, plf=%u, vmin=%u, vmax=%u\n",
                      mySettings.version,
                      mySettings.iInternalVoltageMilliVoltAt1V,
                      mySettings.iInputVoltageMilliVoltAt1V,
+                     mySettings.iInputVoltageOffset,
                      mySettings.iRange0_1mOhms,
                      mySettings.iRange1_100uOhms,
                      mySettings.iRange2_10uOhms,
