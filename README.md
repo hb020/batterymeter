@@ -4,8 +4,8 @@ This repository is about a "pen size" (handheld) tool for quick measurement of v
 
 This tool uses 2 different methods for measuring impedance values:
 
-- "standard" AC 1 kHz impedance, as used by many
-- Direct Current Impedance Spectroscopy, extracting the bulk (solution) resistance and the SEI (Solid Electrolyte Interphase) resistance
+- "standard" AC 1 kHz impedance, as used by many.
+- Direct Current Impedance Spectroscopy, extracting the bulk (solution) resistance and the SEI (Solid Electrolyte Interphase) resistance, allowing better insight in both battery ageing and battery safety. Normally this would require a lengthy procedure via EIS (Electrochemical Impedance Spectroscopy) and model fitting. This tool allows to do it fast and easy.
 
 ![front image](img/IMG_3777.jpg)
 ![use image](img/IMG_3794.jpg)
