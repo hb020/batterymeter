@@ -218,7 +218,7 @@ The (potentially large) DC offset at the entry of the circuit is cancelled at th
 
 In order to reduce the noise and the influence of the power line frequency, multiple samples are taken, and the results are averaged. The timing of the samples is adapted to the configured power line frequency: an identical number of samples is taken for each opposing polarity of the power line signal.
 
-The software allows setting of the power line frequency (50 or 60) vis SCPI commands.
+The software allows setting of the power line frequency (50 or 60) via SCPI commands.
 
 ---
 
