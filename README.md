@@ -10,6 +10,8 @@ This tool uses 2 different methods for measuring impedance values:
 ![front image](img/IMG_3777.jpg)
 ![use image](img/IMG_3794.jpg)
 ![use image](img/IMG_3796.jpg)
+![rig image](img/IMG_3778.jpg)
+![open image](img/IMG_3776.jpg)
 
 ## Contents <!-- omit in toc -->
 
