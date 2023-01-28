@@ -10,8 +10,6 @@ This tool uses 2 different methods for measuring impedance values:
 ![front image](img/IMG_3777.jpg)
 ![use image](img/IMG_3794.jpg)
 ![use image](img/IMG_3796.jpg)
-![rig image](img/IMG_3778.jpg)
-![open image](img/IMG_3776.jpg)
 
 ## Contents <!-- omit in toc -->
 
@@ -308,13 +306,18 @@ Please note that the flash memory is close to the limit: it is 97% full.
 
 ## Construction, Connectors, other hardware
 
+![3d image](img/3d.png)
+![open image](img/IMG_3776.jpg)
+
 The case chosen is a Hammond 1593DBK. That case comes with flat and curved front/back panels. Use the flat one for the back.
 
 The nose cone is 3D printed, see the [nose cone STEP file](/freecad/noseCone.STEP). The holes for the pins may be too small, I had to drill them out.
 
 The pogo pins in the nose cone are regular R100-1W sockets, with P100-B1 pogo pins. For images and dimensions, see the `pogo-*` files in the [/img](/img) folder.
 
-The probe connector at the back is a "avionics" XS10 4P male connector, the same as on the YR1035+. This connector accepts regular YR1035+ compatible 4W probes, or in conjunction with the nose pogo pins, a custom made - probe (just half of the regular 4W probe). The nose pogo pins are directly connected to the + pins on the XS10 connector.
+The probe connector at the back is a "avionics" XS10 4P male connector, the same as on the YR1035+. This connector accepts regular YR1035+ compatible 4W probes, or in conjunction with the nose pogo pins, a custom made - probe (just half of the regular 4W probe). The nose pogo pins are directly connected to the + pins on the XS10 connector. As a result, one can also connect a 4W rig:
+
+![rig image](img/IMG_3778.jpg)
 
 The serial connector/charge plug is a USB micro B. I should have chosen USB-C, but I still had a lot of USB micro B connectors.
 
