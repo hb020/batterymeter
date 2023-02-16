@@ -50,7 +50,7 @@
 #define NO_MAIN
 #endif
 
-#define SW_VERSION "0.9c"
+#define SW_VERSION "0.9d"
 
 const char *AppName = "Batterymeter " SW_VERSION;
 
@@ -79,19 +79,23 @@ const char *AppName = "Batterymeter " SW_VERSION;
 // Chip: ATtiny3226
 // Clock: 10MHz internal (because of 3.3V)
 // Millis: TCB1 (I need TCA)
-// printf(): full
+// printf(): full (haven't found a way to check that on compile time)
 // Wire: Master or Slave
 // Programmer: SerialUPDI SLOW
 
 // !!!!!!! During programming, force the power on with the jumper, as the device otherwise switches off during programming !!!!!!
 
+#ifndef ARDUINO_AVR_ATtiny3226
+#error "Wrong CPU:  must be ATtiny3226"
+#endif
+
 #ifndef MILLIS_USE_TIMERB1
 #error "I Need Timer B1 for millis"
 #endif
+
 #if F_CPU != 10000000L
 #error "Wrong clock speed"
 #endif
-
 #pragma endregion
 
 #pragma region Pinout and other hardware
@@ -306,7 +310,7 @@ void readSettings(void) {
         // 1.00
         // 10.03
         mySettings.iInternalVoltageMilliVoltAt1V = 1000;
-        mySettings.iInputVoltageMilliVoltAt1V = 10045;
+        mySettings.iInputVoltageMilliVoltAt1V = 10047;
         mySettings.iInputVoltageOffset = 60;
 
         // 45	47,018
@@ -2089,9 +2093,13 @@ double getExternalVoltage(void);
  */
 double runDCSample(uint8_t input, int offset, double scale) {
     int32_t rawv = 0;
+// ADC nr of bits
 #define ADC_RESOLUTION 16
 // ADC_RESOLUTION bits, unsigned
 #define adc_max_val_single (1UL << ADC_RESOLUTION)
+
+// Lower value read from the ADC, below which it is no longer linear. 
+#define ADC_LOWERLIMIT 200
 
     // set multiplexer
     setADCInMode(input);
@@ -2107,7 +2115,9 @@ double runDCSample(uint8_t input, int offset, double scale) {
     // But note that the ADC is not highly linear. Best to measure several values and define the offset and scale via fitting.
 
     //Serial.printf("2: ADC_MAX_SCALE_MV: %d, rawv: %ld; offset:%d, scale: %f, adc_max_val_single: %ld ",ADC_MAX_SCALE_MV,(long)rawv,offset,(float)scale,(long)adc_max_val_single);
-    // if (offset != 0) Serial.printf("rawv: %ld\n",rawv);
+    //if (scale > 2.0) Serial.printf("rawv: %ld ",rawv);
+    
+    if (rawv < ADC_LOWERLIMIT) return 0.0;
     return (float)ADC_MAX_SCALE_MV * (scale / 1000.0) * (float)(rawv - offset) / adc_max_val_single;
 }
 
@@ -4093,7 +4103,7 @@ void scpiCmdQueryCAL(SCPI_C commands, SCPI_P parameters, Stream &interface) {
 
     setRemoteControl();
       
-    interface.printf("version=%d, intv=%u, inpv=%u, inpv=%d, r1=%u, r2=%u, r3=%u, r4=%u, t1=%u, t2=%lu, tpause=%u, plf=%u, vmin=%u, vmax=%u\n",
+    interface.printf("version=%d, intv=%u, inpv=%u, inpo=%d, r1=%u, r2=%u, r3=%u, r4=%u, t1=%u, t2=%lu, tpause=%u, plf=%u, vmin=%u, vmax=%u\n",
                      mySettings.version,
                      mySettings.iInternalVoltageMilliVoltAt1V,
                      mySettings.iInputVoltageMilliVoltAt1V,
