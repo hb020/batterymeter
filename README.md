@@ -295,7 +295,7 @@ Those large currents, and the accompanying dissipation, make it unsuited for int
 
 ## CPU and Software environment
 
-- Arduino IDE (unfortunately. platformIO is not very mature yet: board support has just arrived. I'll pass for now.)
+- Arduino IDE (unfortunately. platformIO was not very mature at the time of creation: board support had just arrived.)
 - megaTinyCore
 - CPU: Attiny 3266-SU (SOIC300, non automotive, 32kB Flash, 3kB RAM, 256B EEPROM)
 - Display (SSD1306) via Tiny4kOLED (not SSD1306_minimal, as that is less maintained)
